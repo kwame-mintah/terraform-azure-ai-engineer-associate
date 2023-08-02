@@ -146,7 +146,7 @@ resource "azurerm_log_analytics_workspace" "tfstate_analytics_workspace" {
   name                = "tfstate-${var.environment}-workspace"
   location            = azurerm_resource_group.environment_rg.location
   resource_group_name = azurerm_resource_group.environment_rg.name
-  sku                 = "Free"
+  sku                 = "PerGB2018"
   retention_in_days   = 30
   tags = merge(
     local.common_tags
