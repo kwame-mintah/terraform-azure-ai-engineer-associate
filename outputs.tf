@@ -29,6 +29,16 @@ EOF
   value     = module.cognitive_services.cognitive_services_secondary_access_key
   sensitive = true
 }
+
+output "cognitive_service_key_vault_name" {
+  description = <<-EOF
+    The name of the key vault created to contain cognitive service
+    secrets.
+
+EOF
+
+  value = azurerm_key_vault.cognitive_services_key_vault.name
+}
 output "service_principal_client_id" {
   description = <<-EOF
     The principal being used to apply terraform changes 

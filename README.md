@@ -70,9 +70,11 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 
 | Name | Type |
 |------|------|
+| [azurerm_key_vault.cognitive_services_key_vault](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault) | resource |
 | [azurerm_key_vault.tfstate_key_vault](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault) | resource |
 | [azurerm_key_vault_access_policy.tfstate_storage](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_access_policy) | resource |
 | [azurerm_key_vault_key.tfstate_key_vault_key](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_key) | resource |
+| [azurerm_key_vault_secret.cognitive_services_primary_access_key](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_secret) | resource |
 | [azurerm_log_analytics_storage_insights.tfstate_analytics_storage_insights](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/log_analytics_storage_insights) | resource |
 | [azurerm_log_analytics_workspace.tfstate_analytics_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/log_analytics_workspace) | resource |
 | [azurerm_resource_group.environment_rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/resource_group) | resource |
@@ -101,6 +103,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | Name | Description |
 |------|-------------|
 | <a name="output_cognitive_service_endpoint"></a> [cognitive\_service\_endpoint](#output\_cognitive\_service\_endpoint) | The endpoint used to connect to the Cognitive Service <br>Account. |
+| <a name="output_cognitive_service_key_vault_name"></a> [cognitive\_service\_key\_vault\_name](#output\_cognitive\_service\_key\_vault\_name) | The name of the key vault created to contain cognitive service<br>secrets. |
 | <a name="output_cognitive_service_primary_access_key"></a> [cognitive\_service\_primary\_access\_key](#output\_cognitive\_service\_primary\_access\_key) | A primary access key which can be used to connect to <br>the Cognitive Service Account. |
 | <a name="output_cognitive_service_secondary_access_key"></a> [cognitive\_service\_secondary\_access\_key](#output\_cognitive\_service\_secondary\_access\_key) | The secondary access key which can be used to connect <br>to the Cognitive Service Account. |
 | <a name="output_service_principal_client_id"></a> [service\_principal\_client\_id](#output\_service\_principal\_client\_id) | The principal being used to apply terraform changes <br>for this subscription. |
