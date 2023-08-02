@@ -1,3 +1,34 @@
+output "cognitive_service_endpoint" {
+  description = <<-EOF
+    The endpoint used to connect to the Cognitive Service 
+    Account.
+
+EOF
+
+  value = module.cognitive_services.cognitive_services_endpoint
+}
+
+output "cognitive_service_primary_access_key" {
+  description = <<-EOF
+    A primary access key which can be used to connect to 
+    the Cognitive Service Account.
+
+EOF
+
+  value     = module.cognitive_services.cognitive_services_primary_access_key
+  sensitive = true
+}
+
+output "cognitive_service_secondary_access_key" {
+  description = <<-EOF
+    The secondary access key which can be used to connect 
+    to the Cognitive Service Account.
+
+EOF
+
+  value     = module.cognitive_services.cognitive_services_secondary_access_key
+  sensitive = true
+}
 output "service_principal_client_id" {
   description = <<-EOF
     The principal being used to apply terraform changes 
