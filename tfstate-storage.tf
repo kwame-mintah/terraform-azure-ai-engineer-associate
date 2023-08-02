@@ -28,7 +28,7 @@ resource "azurerm_storage_account" "tfstate" {
   account_replication_type        = "GRS"
   account_kind                    = "StorageV2"
   min_tls_version                 = "TLS1_2"
-  public_network_access_enabled   = false
+  public_network_access_enabled   = true # Ideally this would be false, however needs a VNET to be created.
   enable_https_traffic_only       = true
   allow_nested_items_to_be_public = false
   blob_properties {
@@ -39,6 +39,7 @@ resource "azurerm_storage_account" "tfstate" {
   network_rules {
     default_action = "Deny"
     bypass         = ["Metrics", "AzureServices"]
+    ip_rules       = [var.personal_ip_address] # Should be your own IP address, or won't be able to apply changes.
   }
   queue_properties {
     hour_metrics {
@@ -61,6 +62,17 @@ resource "azurerm_storage_account" "tfstate" {
       retention_policy_days = 10
     }
   }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  lifecycle {
+    ignore_changes = [
+      customer_managed_key
+    ]
+  }
+
   tags = merge(
     local.common_tags
   )

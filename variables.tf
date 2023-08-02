@@ -71,7 +71,8 @@ variable "location" {
 
 EOF
 
-  type = string
+  type    = string
+  default = "West Europe"
 
 }
 
@@ -83,4 +84,13 @@ EOF
 
   type    = map(string)
   default = {}
+}
+
+variable "personal_ip_address" {
+  description = <<-EOF
+    Add your client IP address to the storage account
+    
+EOF
+
+  type = string
 }
