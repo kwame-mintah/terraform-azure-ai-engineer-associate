@@ -97,37 +97,41 @@ resource "azurerm_key_vault" "tfstate_key_vault" {
   network_acls {
     bypass         = "AzureServices"
     default_action = "Deny"
-    ip_rules       = ["0.0.0.0/0"] # This is silly, remove it when you're done.
+    ip_rules       = [var.personal_ip_address] # Should be your own IP address, or won't be able to apply changes.
   }
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
-    key_permissions = [
-      "Create",
-      "Get"
-    ]
-    secret_permissions = [
-      "Get"
-    ]
-    storage_permissions = [
-      "Get"
-    ]
-  }
+
   tags = merge(
     local.common_tags
   )
 }
 
+resource "azurerm_key_vault_access_policy" "tfstate_storage" {
+  key_vault_id = azurerm_key_vault.tfstate_key_vault.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = azurerm_storage_account.tfstate.identity[0].principal_id
+
+  secret_permissions = ["Get"]
+  key_permissions = [
+    "Get",
+    "UnwrapKey",
+    "WrapKey"
+  ]
+}
+
 resource "azurerm_key_vault_key" "tfstate_key_vault_key" {
   name            = "tfstate-${var.environment}-key"
   key_vault_id    = azurerm_key_vault.tfstate_key_vault.id
-  key_type        = "RSA-HSM"
+  key_type        = "RSA"
   key_size        = 2048
   key_opts        = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
   expiration_date = "2024-12-31T00:00:00Z"
   tags = merge(
     local.common_tags
   )
+
+  depends_on = [
+    azurerm_key_vault.tfstate_key_vault
+  ]
 }
 
 resource "azurerm_storage_account_customer_managed_key" "tfstate_cmk" {
