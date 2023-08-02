@@ -1,6 +1,8 @@
-# Terraform Azurem Template
+# Terraform Azure Ai Engineer Associate
 
-The main purpose of this repository is to create a template for [Terraform](https://www.terraform.io/). This project will focus on the [Azurem](https://registry.terraform.io/providers/hashicorp/azurerm/3.58.0) provider.
+The main purpose of this repository is to terraform all the resources needed for [Exam AI-102: Designing and Implementing a Microsoft Azure AI Solution - Certification](https://learn.microsoft.com/en-us/certifications/exams/ai-102/?ns-enrollment-type=Collection&ns-enrollment-id=63rjhrqoe512d3).
+
+The end goal is to be easily deploy all the resources needed for the [self-paced learning](https://learn.microsoft.com/en-us/users/kwame-mintah/collections/63rjhrqoe512d3) modules.
 
 ## Development
 
