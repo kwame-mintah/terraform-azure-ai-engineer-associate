@@ -65,6 +65,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_cognitive_services"></a> [cognitive\_services](#module\_cognitive\_services) | ./modules/cognitive_services | n/a |
+| <a name="module_cognitive_services_container_language"></a> [cognitive\_services\_container\_language](#module\_cognitive\_services\_container\_language) | ./modules/container_instances | n/a |
 
 ## Resources
 
@@ -106,6 +107,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="output_cognitive_service_key_vault_name"></a> [cognitive\_service\_key\_vault\_name](#output\_cognitive\_service\_key\_vault\_name) | The name of the key vault created to contain cognitive service<br>secrets. |
 | <a name="output_cognitive_service_primary_access_key"></a> [cognitive\_service\_primary\_access\_key](#output\_cognitive\_service\_primary\_access\_key) | A primary access key which can be used to connect to <br>the Cognitive Service Account. |
 | <a name="output_cognitive_service_secondary_access_key"></a> [cognitive\_service\_secondary\_access\_key](#output\_cognitive\_service\_secondary\_access\_key) | The secondary access key which can be used to connect <br>to the Cognitive Service Account. |
+| <a name="output_cognitive_services_container_language_fdqn"></a> [cognitive\_services\_container\_language\_fdqn](#output\_cognitive\_services\_container\_language\_fdqn) | The name of the key vault created to contain cognitive service<br>secrets. |
 | <a name="output_service_principal_client_id"></a> [service\_principal\_client\_id](#output\_service\_principal\_client\_id) | The principal being used to apply terraform changes <br>for this subscription. |
 | <a name="output_tenant_id"></a> [tenant\_id](#output\_tenant\_id) | The tenant ID used for this subscription. |
 | <a name="output_tfstate_resource_group_name"></a> [tfstate\_resource\_group\_name](#output\_tfstate\_resource\_group\_name) | The name of the resource group created for the<br>Terraform tfstate. |

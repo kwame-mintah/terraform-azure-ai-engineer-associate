@@ -36,3 +36,16 @@ resource "azurerm_key_vault_secret" "cognitive_services_primary_access_key" {
   expiration_date = "2024-12-31T00:00:00Z"
   content_type    = "text/plain"
 }
+
+module "cognitive_services_container_language" {
+  source                     = "./modules/container_instances"
+  name                       = "language"
+  image                      = "mcr.microsoft.com/azure-cognitive-services/textanalytics/language:latest"
+  environment                = var.environment
+  resource_group_name        = azurerm_resource_group.environment_rg.name
+  cognitive_service_api_key  = module.cognitive_services.cognitive_services_primary_access_key
+  cognitive_service_endpoint = module.cognitive_services.cognitive_services_endpoint
+  tags = merge(
+    local.common_tags
+  )
+}

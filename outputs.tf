@@ -39,6 +39,17 @@ EOF
 
   value = azurerm_key_vault.cognitive_services_key_vault.name
 }
+
+output "cognitive_services_container_language_fdqn" {
+  description = <<-EOF
+    The name of the key vault created to contain cognitive service
+    secrets.
+
+EOF
+
+  value = module.cognitive_services_container_language.cognitive_service_instance_fdqn
+}
+
 output "service_principal_client_id" {
   description = <<-EOF
     The principal being used to apply terraform changes 
