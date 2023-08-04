@@ -23,3 +23,13 @@ output "cognitive_services_secondary_access_key" {
 EOF
   sensitive   = true
 }
+
+output "cognitive_services_key_vault_name" {
+  description = <<-EOF
+    The name of the key vault created to contain cognitive service
+    secrets.
+
+EOF
+
+  value = azurerm_key_vault.cognitive_services_key_vault.name
+}

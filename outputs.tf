@@ -37,7 +37,7 @@ output "cognitive_service_key_vault_name" {
 
 EOF
 
-  value = azurerm_key_vault.cognitive_services_key_vault.name
+  value = module.cognitive_services.cognitive_services_key_vault_name
 }
 
 output "cognitive_services_container_language_fdqn" {
@@ -91,7 +91,7 @@ EOF
 
 output "tfstate_storage_account_key" {
   description = <<-EOF
-    The name of the storage account created for the
+    The storage account key created for the
     Terraform tfstate.
 
 EOF

@@ -88,7 +88,7 @@ EOF
 
 variable "personal_ip_address" {
   description = <<-EOF
-    Add your client IP address to the storage account
+    Add your client IP address to the networking to allow access.
     
 EOF
 

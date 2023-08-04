@@ -71,11 +71,9 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 
 | Name | Type |
 |------|------|
-| [azurerm_key_vault.cognitive_services_key_vault](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault) | resource |
 | [azurerm_key_vault.tfstate_key_vault](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault) | resource |
 | [azurerm_key_vault_access_policy.tfstate_storage](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_access_policy) | resource |
 | [azurerm_key_vault_key.tfstate_key_vault_key](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_key) | resource |
-| [azurerm_key_vault_secret.cognitive_services_primary_access_key](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_secret) | resource |
 | [azurerm_log_analytics_storage_insights.tfstate_analytics_storage_insights](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/log_analytics_storage_insights) | resource |
 | [azurerm_log_analytics_workspace.tfstate_analytics_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/log_analytics_workspace) | resource |
 | [azurerm_resource_group.environment_rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/resource_group) | resource |
@@ -96,7 +94,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="input_cloud_enviornment"></a> [cloud\_enviornment](#input\_cloud\_enviornment) | The Cloud Environment which should be used. Possible values are public,<br>`usgovernment`, `german`, and `china`. Defaults to `public`. This can also be <br>sourced from the ARM\_ENVIRONMENT Environment Variable. | `string` | `"public"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The name of the _environment_ to help identify resources. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | The Azure Region where the Resource Group should exist. <br>Changing this forces a new Resource Group to be created. | `string` | `"West Europe"` | no |
-| <a name="input_personal_ip_address"></a> [personal\_ip\_address](#input\_personal\_ip\_address) | Add your client IP address to the storage account | `string` | n/a | yes |
+| <a name="input_personal_ip_address"></a> [personal\_ip\_address](#input\_personal\_ip\_address) | Add your client IP address to the networking to allow access. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be added to resources created. | `map(string)` | `{}` | no |
 
 ## Outputs
@@ -111,7 +109,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="output_service_principal_client_id"></a> [service\_principal\_client\_id](#output\_service\_principal\_client\_id) | The principal being used to apply terraform changes <br>for this subscription. |
 | <a name="output_tenant_id"></a> [tenant\_id](#output\_tenant\_id) | The tenant ID used for this subscription. |
 | <a name="output_tfstate_resource_group_name"></a> [tfstate\_resource\_group\_name](#output\_tfstate\_resource\_group\_name) | The name of the resource group created for the<br>Terraform tfstate. |
-| <a name="output_tfstate_storage_account_key"></a> [tfstate\_storage\_account\_key](#output\_tfstate\_storage\_account\_key) | The name of the storage account created for the<br>Terraform tfstate. |
+| <a name="output_tfstate_storage_account_key"></a> [tfstate\_storage\_account\_key](#output\_tfstate\_storage\_account\_key) | The storage account key created for the<br>Terraform tfstate. |
 | <a name="output_tfstate_storage_account_name"></a> [tfstate\_storage\_account\_name](#output\_tfstate\_storage\_account\_name) | The name of the storage account created for the<br>Terraform tfstate. |
 | <a name="output_tfstate_storage_container_name"></a> [tfstate\_storage\_container\_name](#output\_tfstate\_storage\_container\_name) | The name of the storage container created for the<br>Terraform tfstate. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK --->
