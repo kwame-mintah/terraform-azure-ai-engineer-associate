@@ -175,6 +175,15 @@ resource "azurerm_monitor_diagnostic_setting" "tfstate_diagnostic_setting" {
       days    = 7
     }
   }
+  metric {
+    category = "Capacity"
+    enabled  = false
+
+    retention_policy {
+      days    = 0
+      enabled = false
+    }
+  }
 
   depends_on = [azurerm_log_analytics_workspace.tfstate_analytics_workspace]
 }
