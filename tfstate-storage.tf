@@ -160,3 +160,21 @@ resource "azurerm_log_analytics_storage_insights" "tfstate_analytics_storage_ins
   storage_account_id  = azurerm_storage_account.tfstate.id
   storage_account_key = azurerm_storage_account.tfstate.primary_access_key
 }
+
+# Diagnostic Setting for storage account
+
+resource "azurerm_monitor_diagnostic_setting" "tfstate_diagnostic_setting" {
+  name                       = "${var.environment}-tfstate-diagnostic"
+  target_resource_id         = azurerm_storage_account.tfstate.id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.tfstate_analytics_workspace.id
+  metric {
+    category = "Transaction"
+
+    retention_policy {
+      enabled = true
+      days    = 7
+    }
+  }
+
+  depends_on = [azurerm_log_analytics_workspace.tfstate_analytics_workspace]
+}

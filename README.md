@@ -76,6 +76,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | [azurerm_key_vault_key.tfstate_key_vault_key](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_key) | resource |
 | [azurerm_log_analytics_storage_insights.tfstate_analytics_storage_insights](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/log_analytics_storage_insights) | resource |
 | [azurerm_log_analytics_workspace.tfstate_analytics_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/log_analytics_workspace) | resource |
+| [azurerm_monitor_diagnostic_setting.tfstate_diagnostic_setting](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting) | resource |
 | [azurerm_resource_group.environment_rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/resource_group) | resource |
 | [azurerm_storage_account.tfstate](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_account) | resource |
 | [azurerm_storage_account_customer_managed_key.tfstate_cmk](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_account_customer_managed_key) | resource |
