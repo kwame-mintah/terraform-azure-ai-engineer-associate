@@ -10,7 +10,7 @@ EOF
 
 output "cognitive_service_primary_access_key" {
   description = <<-EOF
-    A primary access key which can be used to connect to 
+    The primary access key which can be used to connect to 
     the Cognitive Service Account.
 
 EOF
@@ -38,6 +38,48 @@ output "cognitive_service_key_vault_name" {
 EOF
 
   value = module.cognitive_services.cognitive_services_key_vault_name
+}
+
+output "language_service_endpoint" {
+  description = <<-EOF
+    The endpoint used to connect to the Language Service 
+    Account.
+
+EOF
+
+  value = module.language_service.cognitive_services_endpoint
+}
+
+output "language_service_primary_access_key" {
+  description = <<-EOF
+    The primary access key which can be used to connect to 
+    the Language Service Account.
+
+EOF
+
+  value     = module.language_service.cognitive_services_primary_access_key
+  sensitive = true
+}
+
+output "language_service_secondary_access_key" {
+  description = <<-EOF
+    The secondary access key which can be used to connect 
+    to the Language Service Account.
+
+EOF
+
+  value     = module.language_service.cognitive_services_secondary_access_key
+  sensitive = true
+}
+
+output "language_service_key_vault_name" {
+  description = <<-EOF
+    The name of the key vault created to contain language service
+    secrets.
+
+EOF
+
+  value = module.language_service.cognitive_services_key_vault_name
 }
 
 output "cognitive_services_container_language_fdqn" {
