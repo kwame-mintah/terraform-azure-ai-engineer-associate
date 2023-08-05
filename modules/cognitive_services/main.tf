@@ -37,6 +37,34 @@ resource "azurerm_key_vault" "cognitive_services_key_vault" {
     ip_rules       = [var.personal_ip_address] # Should be your own IP address, or won't be able to apply changes.
   }
 
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id # This will allow the Terraform client the ability to add keys
+    key_permissions = [
+      "Get",
+      "List",
+      "Update",
+      "Create",
+      "Import",
+      "Delete",
+      "Recover",
+      "Backup",
+      "Restore",
+      "GetRotationPolicy",
+      "SetRotationPolicy",
+      "Rotate",
+    ]
+    secret_permissions = [
+      "Get",
+      "List",
+      "Set",
+      "Delete",
+      "Recover",
+      "Backup",
+      "Restore",
+    ]
+  }
+
   tags = merge(
     local.common_tags
   )
