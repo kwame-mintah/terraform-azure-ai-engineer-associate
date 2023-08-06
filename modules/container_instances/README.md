@@ -2,7 +2,7 @@
 
 A module to deploy cognitive service image(s) to an Azure Container Instances (ACI) resource.
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK --->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -44,4 +44,4 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_cognitive_service_instance_fdqn"></a> [cognitive\_service\_instance\_fdqn](#output\_cognitive\_service\_instance\_fdqn) | The FQDN of the container group derived from `dns_name_label`. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK --->
+<!-- END_TF_DOCS -->

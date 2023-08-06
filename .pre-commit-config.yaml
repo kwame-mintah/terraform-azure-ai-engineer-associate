@@ -9,6 +9,8 @@ repos:
   hooks:
     - id: terraform_tfsec
     - id: terraform_docs
+      args:
+        - --args=--recursive --output-file=README.md
     - id: terraform_checkov
       args:
         - --args=--skip-check CKV2_AZURE_21,CKV2_AZURE_32,CKV2_AZURE_33,CKV_AZURE_112,CKV_AZURE_59,CKV_AZURE_134,CKV_AZURE_98
