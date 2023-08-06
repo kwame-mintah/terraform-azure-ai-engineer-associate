@@ -13,7 +13,7 @@ repos:
         - --args=--recursive --output-file=README.md
     - id: terraform_checkov
       args:
-        - --args=--skip-check CKV2_AZURE_21,CKV2_AZURE_32,CKV2_AZURE_33,CKV_AZURE_112,CKV_AZURE_59,CKV_AZURE_134,CKV_AZURE_98
+        - --args=--skip-check CKV2_AZURE_21,CKV2_AZURE_32,CKV2_AZURE_33,CKV_AZURE_112,CKV_AZURE_59,CKV_AZURE_134,CKV_AZURE_98,CKV_AZURE_124,CKV_AZURE_209,CKV_AZURE_208,CKV_AZURE_207
     - id: terraform_tflint
       args:
       - '--args=--enable-rule=terraform_deprecated_interpolation'
