@@ -22,7 +22,9 @@ resource "azurerm_cognitive_account" "cognitive_services_account" {
   resource_group_name = var.resource_group_name
   kind                = var.kind
 
-  sku_name = var.sku_name
+  sku_name                                     = var.sku_name
+  custom_question_answering_search_service_id  = var.search_service_id
+  custom_question_answering_search_service_key = var.search_service_key
 
   tags = merge(
     local.common_tags

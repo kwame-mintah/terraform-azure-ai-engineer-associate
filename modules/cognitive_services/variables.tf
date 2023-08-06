@@ -65,6 +65,28 @@ EOF
 
 }
 
+variable "search_service_id" {
+  description = <<-EOF
+  If kind is `TextAnalytics` this specifies the ID of the Search service.
+
+EOF
+
+  type    = string
+  default = null
+
+}
+
+variable "search_service_key" {
+  description = <<-EOF
+  If kind is `TextAnalytics` this specifies the key of the Search service.
+
+EOF
+
+  type    = string
+  default = null
+
+}
+
 variable "personal_ip_address" {
   description = <<-EOF
     Add your client IP address to the networking to allow
