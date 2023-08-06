@@ -10,6 +10,12 @@ locals {
 
 data "azurerm_client_config" "current" {}
 
+resource "random_string" "resource_code" {
+  length  = 3
+  special = false
+  upper   = false
+}
+
 resource "azurerm_cognitive_account" "cognitive_services_account" {
   name                = var.name
   location            = var.location
@@ -24,7 +30,7 @@ resource "azurerm_cognitive_account" "cognitive_services_account" {
 }
 
 resource "azurerm_key_vault" "cognitive_services_key_vault" {
-  name                       = lower("${local.shorten_name}-${var.kind}") # Vault name must be between 3 and 24 characters in length.
+  name                       = lower("${local.shorten_name}-${var.kind}${random_string.resource_code.result}") # Vault name must be between 3 and 24 characters in length.
   location                   = var.location
   resource_group_name        = var.resource_group_name
   tenant_id                  = data.azurerm_client_config.current.tenant_id
