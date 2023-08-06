@@ -25,6 +25,35 @@ module "language_service" {
   )
 }
 
+module "custom_question_answer_service" {
+  source              = "./modules/cognitive_services"
+  name                = "${var.environment}-custom-qna-service"
+  location            = azurerm_resource_group.environment_rg.location
+  resource_group_name = azurerm_resource_group.environment_rg.name
+  kind                = "TextAnalytics"
+  personal_ip_address = var.personal_ip_address
+  sku_name            = "S"
+  search_service_id   = azurerm_search_service.cognitive_search_service.id
+  search_service_key  = azurerm_search_service.cognitive_search_service.primary_key
+
+
+  tags = merge(
+    var.tags
+  )
+  depends_on = [azurerm_search_service.cognitive_search_service]
+}
+
+resource "azurerm_search_service" "cognitive_search_service" {
+  name                = "custom-qna-search-service"
+  location            = azurerm_resource_group.environment_rg.location
+  resource_group_name = azurerm_resource_group.environment_rg.name
+  sku                 = "free"
+
+  tags = merge(
+    var.tags
+  )
+}
+
 module "cognitive_services_container_language" {
   source                     = "./modules/container_instances"
   name                       = "language"

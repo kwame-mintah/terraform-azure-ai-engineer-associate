@@ -41,10 +41,10 @@ Additionally, once installed, the hooks can be updated to the latest available v
 
 Code formatting and documentation for `variables` and `outputs` is generated using [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform/releases) hooks that in turn uses [terraform-docs](https://github.com/terraform-docs/terraform-docs) that will insert/update documentation. The following markers have been added to the `README.md`:
 ```
-<!-- {BEGINNING|END} OF PRE-COMMIT-TERRAFORM DOCS HOOK --->
+<!-- {BEGIN|END}_TF_DOCS --->
 ```
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK --->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -66,6 +66,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 |------|--------|---------|
 | <a name="module_cognitive_services"></a> [cognitive\_services](#module\_cognitive\_services) | ./modules/cognitive_services | n/a |
 | <a name="module_cognitive_services_container_language"></a> [cognitive\_services\_container\_language](#module\_cognitive\_services\_container\_language) | ./modules/container_instances | n/a |
+| <a name="module_custom_question_answer_service"></a> [custom\_question\_answer\_service](#module\_custom\_question\_answer\_service) | ./modules/cognitive_services | n/a |
 | <a name="module_language_service"></a> [language\_service](#module\_language\_service) | ./modules/cognitive_services | n/a |
 
 ## Resources
@@ -79,6 +80,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | [azurerm_log_analytics_workspace.tfstate_analytics_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/log_analytics_workspace) | resource |
 | [azurerm_monitor_diagnostic_setting.tfstate_diagnostic_setting](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting) | resource |
 | [azurerm_resource_group.environment_rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/resource_group) | resource |
+| [azurerm_search_service.cognitive_search_service](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/search_service) | resource |
 | [azurerm_storage_account.tfstate](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_account) | resource |
 | [azurerm_storage_account_customer_managed_key.tfstate_cmk](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_account_customer_managed_key) | resource |
 | [azurerm_storage_container.tfstate](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_container) | resource |
@@ -118,4 +120,4 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="output_tfstate_storage_account_key"></a> [tfstate\_storage\_account\_key](#output\_tfstate\_storage\_account\_key) | The storage account key created for the<br>Terraform tfstate. |
 | <a name="output_tfstate_storage_account_name"></a> [tfstate\_storage\_account\_name](#output\_tfstate\_storage\_account\_name) | The name of the storage account created for the<br>Terraform tfstate. |
 | <a name="output_tfstate_storage_container_name"></a> [tfstate\_storage\_container\_name](#output\_tfstate\_storage\_container\_name) | The name of the storage container created for the<br>Terraform tfstate. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK --->
+<!-- END_TF_DOCS -->
