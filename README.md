@@ -68,6 +68,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="module_cognitive_services_container_language"></a> [cognitive\_services\_container\_language](#module\_cognitive\_services\_container\_language) | ./modules/container_instances | n/a |
 | <a name="module_custom_question_answer_service"></a> [custom\_question\_answer\_service](#module\_custom\_question\_answer\_service) | ./modules/cognitive_services | n/a |
 | <a name="module_language_service"></a> [language\_service](#module\_language\_service) | ./modules/cognitive_services | n/a |
+| <a name="module_media_services_video_indexer"></a> [media\_services\_video\_indexer](#module\_media\_services\_video\_indexer) | ./modules/video_indexers | n/a |
 
 ## Resources
 

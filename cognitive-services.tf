@@ -67,3 +67,16 @@ module "cognitive_services_container_language" {
     local.common_tags
   )
 }
+
+module "media_services_video_indexer" {
+  source              = "./modules/video_indexers"
+  name                = "videoindexer"
+  location            = azurerm_resource_group.environment_rg.location
+  resource_group_name = azurerm_resource_group.environment_rg.name
+  environment         = var.environment
+  personal_ip_address = var.personal_ip_address
+
+  tags = merge(
+    local.common_tags
+  )
+}
