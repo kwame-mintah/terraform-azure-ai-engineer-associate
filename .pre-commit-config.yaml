@@ -10,7 +10,9 @@ repos:
     - id: terraform_tfsec
     - id: terraform_docs
       args:
-        - --args=--recursive --output-file=README.md
+        - '--args=--recursive'
+        - '--args=--output-file=README.md'
+        - '--args=--recursive-path=.'
     - id: terraform_checkov
       args:
         - --args=--skip-check CKV2_AZURE_21,CKV2_AZURE_32,CKV2_AZURE_33,CKV_AZURE_112,CKV_AZURE_59,CKV_AZURE_134,CKV_AZURE_98,CKV_AZURE_124,CKV_AZURE_209,CKV_AZURE_208,CKV_AZURE_207
