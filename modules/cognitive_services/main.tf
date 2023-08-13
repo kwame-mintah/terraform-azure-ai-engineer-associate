@@ -5,7 +5,9 @@ locals {
   common_tags = merge(
     var.tags
   )
-  shorten_name = substr(var.name, 0, 3)
+  shorten_name          = substr(var.name, 0, 3)
+  kind_remove_fullstops = replace(var.kind, ".", "-")
+  shorten_kind          = substr(local.kind_remove_fullstops, 0, 17)
 }
 
 data "azurerm_client_config" "current" {}
@@ -32,7 +34,7 @@ resource "azurerm_cognitive_account" "cognitive_services_account" {
 }
 
 resource "azurerm_key_vault" "cognitive_services_key_vault" {
-  name                       = lower("${local.shorten_name}-${var.kind}${random_string.resource_code.result}") # Vault name must be between 3 and 24 characters in length.
+  name                       = lower("${local.shorten_name}-${local.shorten_kind}${random_string.resource_code.result}") # Vault name must be between 3 and 24 characters in length.
   location                   = var.location
   resource_group_name        = var.resource_group_name
   tenant_id                  = data.azurerm_client_config.current.tenant_id
