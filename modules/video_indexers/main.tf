@@ -60,6 +60,7 @@ resource "azurerm_resource_group_template_deployment" "video_indexer" {
   ]
 }
 
+# Create managed identify
 resource "azurerm_user_assigned_identity" "video_indexer_user_assigned_identity" {
   name                = "video-indexer-user-identity-${random_string.resource_code.result}"
   resource_group_name = var.resource_group_name
@@ -77,6 +78,7 @@ resource "azurerm_role_assignment" "video_indexer_media_services_access" {
   principal_id         = azurerm_user_assigned_identity.video_indexer_user_assigned_identity.principal_id
 }
 
+# Create storage account
 resource "azurerm_storage_account" "media_storage" {
   name                            = "${var.name}${local.shorten_name}${random_string.resource_code.result}"
   resource_group_name             = var.resource_group_name
@@ -93,6 +95,11 @@ resource "azurerm_storage_account" "media_storage" {
     default_action = "Deny"
     bypass         = ["Metrics", "AzureServices"]
     ip_rules       = [var.personal_ip_address] # Should be your own IP address, or won't be able to apply changes.
+
+    # Ideally, this would be the video indexer id, but resource currently not created via Terraform but instead via ARM
+    # private_link_access {
+    #   endpoint_resource_id = <Video Indexer ID>
+    # }
   }
 
   queue_properties {
