@@ -25,6 +25,34 @@ module "language_service" {
   )
 }
 
+module "custom_vision_service_training" {
+  source              = "./modules/cognitive_services"
+  name                = "${var.environment}-custom-version-training"
+  location            = azurerm_resource_group.environment_rg.location
+  resource_group_name = azurerm_resource_group.environment_rg.name
+  kind                = "CustomVision.Training"
+  personal_ip_address = var.personal_ip_address
+  sku_name            = "F0"
+
+  tags = merge(
+    var.tags
+  )
+}
+
+module "custom_vision_service_prediction" {
+  source              = "./modules/cognitive_services"
+  name                = "${var.environment}-custom-version-prediction"
+  location            = azurerm_resource_group.environment_rg.location
+  resource_group_name = azurerm_resource_group.environment_rg.name
+  kind                = "CustomVision.Prediction"
+  personal_ip_address = var.personal_ip_address
+  sku_name            = "F0"
+
+  tags = merge(
+    var.tags
+  )
+}
+
 module "custom_question_answer_service" {
   source              = "./modules/cognitive_services"
   name                = "${var.environment}-custom-qna-service"

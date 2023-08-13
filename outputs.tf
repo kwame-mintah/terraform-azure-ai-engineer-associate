@@ -82,10 +82,94 @@ EOF
   value = module.language_service.cognitive_services_key_vault_name
 }
 
+
+output "custom_vision_service_training_endpoint" {
+  description = <<-EOF
+    The endpoint used to connect to the custom vision 
+    training service Account.
+
+EOF
+
+  value = module.custom_vision_service_training.cognitive_services_endpoint
+}
+
+output "custom_vision_service_training_primary_access_key" {
+  description = <<-EOF
+    The primary access key which can be used to connect to 
+    the Cognitive Service Account.
+
+EOF
+
+  value     = module.custom_vision_service_training.cognitive_services_primary_access_key
+  sensitive = true
+}
+
+output "custom_vision_service_training_secondary_access_key" {
+  description = <<-EOF
+    The secondary access key which can be used to connect 
+    to the Cognitive Service Account.
+
+EOF
+
+  value     = module.custom_vision_service_training.cognitive_services_secondary_access_key
+  sensitive = true
+}
+
+output "custom_vision_service_training_key_vault_name" {
+  description = <<-EOF
+    The name of the key vault created to contain custom vision
+    secrets.
+
+EOF
+
+  value = module.custom_vision_service_training.cognitive_services_key_vault_name
+}
+
+output "custom_vision_service_prediction_endpoint" {
+  description = <<-EOF
+    The endpoint used to connect to the custom vision 
+    prediction service Account.
+
+EOF
+
+  value = module.custom_vision_service_prediction.cognitive_services_endpoint
+}
+
+output "custom_vision_service_prediction_primary_access_key" {
+  description = <<-EOF
+    The primary access key which can be used to connect to 
+    the Cognitive Service Account.
+
+EOF
+
+  value     = module.custom_vision_service_prediction.cognitive_services_primary_access_key
+  sensitive = true
+}
+
+output "custom_vision_service_prediction_secondary_access_key" {
+  description = <<-EOF
+    The secondary access key which can be used to connect 
+    to the Cognitive Service Account.
+
+EOF
+
+  value     = module.custom_vision_service_prediction.cognitive_services_secondary_access_key
+  sensitive = true
+}
+
+output "custom_vision_service_prediction_key_vault_name" {
+  description = <<-EOF
+    The name of the key vault created to contain custom vision
+    secrets.
+
+EOF
+
+  value = module.custom_vision_service_prediction.cognitive_services_key_vault_name
+}
+
 output "cognitive_services_container_language_fdqn" {
   description = <<-EOF
-    The name of the key vault created to contain cognitive service
-    secrets.
+    The FDQN to connect to the container instance.
 
 EOF
 
