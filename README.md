@@ -24,8 +24,12 @@ The end goal is to be easily deploy all the resources needed for the [self-paced
 2. Plan your changes with `terragrunt plan` to see what changes will be made,
 3. If you're happy with the changes `terragrunt apply`.
 
-Please note that `.tfstate` files are stored locally on your machine as no backend has been specified. If you would like to properly version control your state files, it is possible to use an S3 bucket to store these files. 
-This will ensure anyone else other than you running a plan/apply will always be using the same state file.
+> **IMPORTANT**
+>
+> Please note that `.tfstate` files are stored locally on your machine on first apply, an Azure Storage account is created as part of the Terraform. 
+> However you will be required to migrate to it after the tfstate storage account has been created. Please see comments in `backend.tf` or any of the environment `terragrunt.hcl`.
+>
+
 
 ## Pre-Commit hooks
 
