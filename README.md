@@ -30,6 +30,71 @@ The end goal is to be easily deploy all the resources needed for the [self-paced
 > However you will be required to migrate to it after the tfstate storage account has been created. Please see comments in `backend.tf` or any of the environment `terragrunt.hcl`.
 >
 
+## Cost
+
+A majority of the resources created will have either the 'Standard' or 'Free' tier used, however this does not mean that it will be cheap. Please be mindful of the cost for each tier,
+for example the Azure Container Instance is always running and you will be charged for it's up-time during the month. [Infracost](https://www.infracost.io/) has been used to help indicate how much it will cost
+you to have all these resources created.
+
+<details>
+<summary>Predicted Infracost as of 14/08/2023</summary>
+
+  ```markdown
+  Name                                                                              Monthly Qty  Unit                      Monthly Cost
+
+  azurerm_key_vault_key.tfstate_key_vault_key
+  ├─ Secrets operations                                                      Monthly cost depends on usage: $0.03 per 10K transactions
+  ├─ Storage key rotations                                                   Monthly cost depends on usage: $1.00 per renewals
+  └─ Software-protected keys                                                 Monthly cost depends on usage: $0.03 per 10K transactions
+
+  azurerm_log_analytics_workspace.tfstate_analytics_workspace
+  ├─ Log data ingestion                                                      Monthly cost depends on usage: $2.99 per GB
+  ├─ Log data export                                                         Monthly cost depends on usage: $0.13 per GB
+  ├─ Basic log data ingestion                                                Monthly cost depends on usage: $0.65 per GB
+  ├─ Basic log search queries                                                Monthly cost depends on usage: $0.0065 per GB searched
+  ├─ Archive data                                                            Monthly cost depends on usage: $0.026 per GB
+  ├─ Archive data restored                                                   Monthly cost depends on usage: $0.13 per GB
+  └─ Archive data searched                                                   Monthly cost depends on usage: $0.0065 per GB
+
+  azurerm_storage_account.tfstate
+  ├─ Capacity                                                                Monthly cost depends on usage: $0.0392 per GB
+  ├─ Write operations                                                        Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ List and create container operations                                    Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ Read operations                                                         Monthly cost depends on usage: $0.0043 per 10k operations
+  ├─ All other operations                                                    Monthly cost depends on usage: $0.0043 per 10k operations
+  └─ Blob index                                                              Monthly cost depends on usage: $0.075 per 10k tags
+
+  module.media_services_video_indexer.azurerm_storage_account.media_storage
+  ├─ Capacity                                                                Monthly cost depends on usage: $0.0392 per GB
+  ├─ Write operations                                                        Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ List and create container operations                                    Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ Read operations                                                         Monthly cost depends on usage: $0.0043 per 10k operations
+  ├─ All other operations                                                    Monthly cost depends on usage: $0.0043 per 10k operations
+  └─ Blob index                                                              Monthly cost depends on usage: $0.075 per 10k tags
+
+  OVERALL TOTAL                                                                                                                   $0.00
+  ──────────────────────────────────
+  41 cloud resources were detected:
+  ∙ 5 were estimated, all of which include usage-based costs, see https://infracost.io/usage-file
+  ∙ 29 were free:
+    ∙ 10 x azurerm_key_vault_secret
+    ∙ 6 x azurerm_key_vault
+    ∙ 5 x azurerm_monitor_activity_log_alert
+    ∙ 1 x azurerm_key_vault_access_policy
+    ∙ 1 x azurerm_log_analytics_storage_insights
+    ∙ 1 x azurerm_resource_group
+    ∙ 1 x azurerm_role_assignment
+    ∙ 1 x azurerm_search_service
+    ∙ 1 x azurerm_storage_account_customer_managed_key
+    ∙ 1 x azurerm_storage_container
+    ∙ 1 x azurerm_user_assigned_identity
+  ∙ 7 are not supported yet, see https://infracost.io/requested-resources:
+    ∙ 5 x azurerm_cognitive_account
+    ∙ 1 x azurerm_media_services_account
+    ∙ 1 x azurerm_resource_group_template_deployment
+  ```
+
+</details>
 
 ## Pre-Commit hooks
 
