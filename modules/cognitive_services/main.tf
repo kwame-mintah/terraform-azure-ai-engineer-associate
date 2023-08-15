@@ -184,10 +184,11 @@ resource "azurerm_storage_account" "cognitive_service_storage" {
   )
 }
 
+#tfsec:ignore:azure-storage-no-public-access
 resource "azurerm_storage_container" "cognitive_service_container" {
   count                = var.create_storage_account ? 1 : 0
   name                 = var.storage_container_name
   storage_account_name = azurerm_storage_account.cognitive_service_storage[0].name
   #checkov:skip=CKV_AZURE_34:The Azure example provided the azure-ai-formrecognizer uses a SAS token when trying models(?)
-  container_access_type = "blob" #tfsec:ignore:azure-storage-no-public-access
+  container_access_type = "blob"
 }

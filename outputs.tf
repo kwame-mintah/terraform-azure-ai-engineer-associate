@@ -167,6 +167,48 @@ EOF
   value = module.custom_vision_service_prediction.cognitive_services_key_vault_name
 }
 
+output "form_recognizer_endpoint" {
+  description = <<-EOF
+    The endpoint used to connect to the form recognizer
+     Account.
+
+EOF
+
+  value = module.form_recognizer.cognitive_services_endpoint
+}
+
+output "form_recognizer_primary_access_key" {
+  description = <<-EOF
+    The primary access key which can be used to connect to 
+    the Cognitive Service Account.
+
+EOF
+
+  value     = module.form_recognizer.cognitive_services_primary_access_key
+  sensitive = true
+}
+
+output "form_recognizer_secondary_access_key" {
+  description = <<-EOF
+    The secondary access key which can be used to connect 
+    to the Cognitive Service Account.
+
+EOF
+
+  value     = module.form_recognizer.cognitive_services_secondary_access_key
+  sensitive = true
+}
+
+output "form_recognizer_key_vault_name" {
+  description = <<-EOF
+    The name of the key vault created to contain form recognizer
+    secrets.
+
+EOF
+
+  value = module.form_recognizer.cognitive_services_key_vault_name
+}
+
 output "cognitive_services_container_language_fdqn" {
   description = <<-EOF
     The FDQN to connect to the container instance.

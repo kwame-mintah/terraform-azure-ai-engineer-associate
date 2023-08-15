@@ -138,6 +138,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="module_custom_question_answer_service"></a> [custom\_question\_answer\_service](#module\_custom\_question\_answer\_service) | ./modules/cognitive_services | n/a |
 | <a name="module_custom_vision_service_prediction"></a> [custom\_vision\_service\_prediction](#module\_custom\_vision\_service\_prediction) | ./modules/cognitive_services | n/a |
 | <a name="module_custom_vision_service_training"></a> [custom\_vision\_service\_training](#module\_custom\_vision\_service\_training) | ./modules/cognitive_services | n/a |
+| <a name="module_form_recognizer"></a> [form\_recognizer](#module\_form\_recognizer) | ./modules/cognitive_services | n/a |
 | <a name="module_language_service"></a> [language\_service](#module\_language\_service) | ./modules/cognitive_services | n/a |
 | <a name="module_media_services_video_indexer"></a> [media\_services\_video\_indexer](#module\_media\_services\_video\_indexer) | ./modules/video_indexers | n/a |
 
@@ -190,6 +191,10 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="output_custom_vision_service_training_key_vault_name"></a> [custom\_vision\_service\_training\_key\_vault\_name](#output\_custom\_vision\_service\_training\_key\_vault\_name) | The name of the key vault created to contain custom vision<br>secrets. |
 | <a name="output_custom_vision_service_training_primary_access_key"></a> [custom\_vision\_service\_training\_primary\_access\_key](#output\_custom\_vision\_service\_training\_primary\_access\_key) | The primary access key which can be used to connect to <br>the Cognitive Service Account. |
 | <a name="output_custom_vision_service_training_secondary_access_key"></a> [custom\_vision\_service\_training\_secondary\_access\_key](#output\_custom\_vision\_service\_training\_secondary\_access\_key) | The secondary access key which can be used to connect <br>to the Cognitive Service Account. |
+| <a name="output_form_recognizer_endpoint"></a> [form\_recognizer\_endpoint](#output\_form\_recognizer\_endpoint) | The endpoint used to connect to the form recognizer<br> Account. |
+| <a name="output_form_recognizer_key_vault_name"></a> [form\_recognizer\_key\_vault\_name](#output\_form\_recognizer\_key\_vault\_name) | The name of the key vault created to contain form recognizer<br>secrets. |
+| <a name="output_form_recognizer_primary_access_key"></a> [form\_recognizer\_primary\_access\_key](#output\_form\_recognizer\_primary\_access\_key) | The primary access key which can be used to connect to <br>the Cognitive Service Account. |
+| <a name="output_form_recognizer_secondary_access_key"></a> [form\_recognizer\_secondary\_access\_key](#output\_form\_recognizer\_secondary\_access\_key) | The secondary access key which can be used to connect <br>to the Cognitive Service Account. |
 | <a name="output_language_service_endpoint"></a> [language\_service\_endpoint](#output\_language\_service\_endpoint) | The endpoint used to connect to the Language Service <br>Account. |
 | <a name="output_language_service_key_vault_name"></a> [language\_service\_key\_vault\_name](#output\_language\_service\_key\_vault\_name) | The name of the key vault created to contain language service<br>secrets. |
 | <a name="output_language_service_primary_access_key"></a> [language\_service\_primary\_access\_key](#output\_language\_service\_primary\_access\_key) | The primary access key which can be used to connect to <br>the Language Service Account. |
