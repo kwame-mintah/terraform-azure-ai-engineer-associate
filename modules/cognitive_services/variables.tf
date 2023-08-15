@@ -87,6 +87,29 @@ EOF
 
 }
 
+variable "storage_container_name" {
+  description = <<-EOF
+  The name of the Container which should be created within the Storage Account. 
+  Changing this forces a new resource to be created.
+
+EOF
+
+  type    = string
+  default = null
+
+}
+
+variable "create_storage_account" {
+  description = <<-EOF
+  Create a storage account for the cognitive service. 
+
+EOF
+
+  type    = bool
+  default = false
+
+}
+
 variable "personal_ip_address" {
   description = <<-EOF
     Add your client IP address to the networking to allow

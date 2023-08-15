@@ -28,6 +28,10 @@ resource "azurerm_cognitive_account" "cognitive_services_account" {
   custom_question_answering_search_service_id  = var.search_service_id
   custom_question_answering_search_service_key = var.search_service_key
 
+  identity {
+    type = "SystemAssigned"
+  }
+
   tags = merge(
     local.common_tags
   )
@@ -112,4 +116,77 @@ resource "azurerm_monitor_activity_log_alert" "cognitive_services_alert" {
   tags = merge(
     local.common_tags
   )
+}
+
+# FIXME: If a storage account is created, then an Azure Role assignment is neeed.
+# The cognitive resource will need to be assigned the role 'Storage Blob Data Contributor' (?) or
+# will not be able to access the container blob when retriving items for training a model via SDK.
+# Need to manually add this via the Azure Portal console:
+# Open the cognitive service created -> Identity -> Azure Role assignments -> '+ Add role assignment (Preview)'
+# Scope: Storage, Subscription: Select your own, Role: Storage Blob Data Contributor and save changes.
+resource "azurerm_storage_account" "cognitive_service_storage" {
+  count                           = var.create_storage_account ? 1 : 0
+  name                            = lower("${local.shorten_name}${local.shorten_kind}${random_string.resource_code.result}")
+  resource_group_name             = var.resource_group_name
+  location                        = var.location
+  account_tier                    = "Standard"
+  account_replication_type        = "GRS"
+  account_kind                    = "StorageV2"
+  min_tls_version                 = "TLS1_2"
+  public_network_access_enabled   = true # Ideally this would be false, however needs a VNET to be created.
+  enable_https_traffic_only       = true
+  allow_nested_items_to_be_public = false
+
+  network_rules {
+    default_action = "Deny"
+    bypass         = ["Metrics", "AzureServices"]
+    ip_rules       = [var.personal_ip_address] # Should be your own IP address, or won't be able to apply changes.
+
+    private_link_access {
+      endpoint_resource_id = azurerm_cognitive_account.cognitive_services_account.id
+    }
+  }
+
+  queue_properties {
+    hour_metrics {
+      enabled               = true
+      include_apis          = true
+      version               = "1.0"
+      retention_policy_days = 10
+    }
+    minute_metrics {
+      enabled               = true
+      include_apis          = true
+      version               = "1.0"
+      retention_policy_days = 10
+    }
+    logging {
+      delete                = true
+      read                  = true
+      write                 = true
+      version               = "1.0"
+      retention_policy_days = 10
+    }
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  lifecycle {
+    ignore_changes = [
+      customer_managed_key
+    ]
+  }
+
+  tags = merge(
+    local.common_tags
+  )
+}
+
+resource "azurerm_storage_container" "cognitive_service_container" {
+  count                 = var.create_storage_account ? 1 : 0
+  name                  = var.storage_container_name
+  storage_account_name  = azurerm_storage_account.cognitive_service_storage[0].name
+  container_access_type = "blob"
 }

@@ -31,6 +31,8 @@ No modules.
 | [azurerm_key_vault_secret.cognitive_services_primary_access_key](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_secret) | resource |
 | [azurerm_key_vault_secret.cognitive_services_secondary_access_key](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault_secret) | resource |
 | [azurerm_monitor_activity_log_alert.cognitive_services_alert](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_activity_log_alert) | resource |
+| [azurerm_storage_account.cognitive_service_storage](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_account) | resource |
+| [azurerm_storage_container.cognitive_service_container](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_container) | resource |
 | [random_string.resource_code](https://registry.terraform.io/providers/hashicorp/random/3.5.1/docs/resources/string) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/data-sources/client_config) | data source |
 
@@ -38,6 +40,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_create_storage_account"></a> [create\_storage\_account](#input\_create\_storage\_account) | Create a storage account for the cognitive service. | `bool` | `false` | no |
 | <a name="input_kind"></a> [kind](#input\_kind) | Specifies the type of Cognitive Service Account that should be created. <br>Possible values are `Academic`, `AnomalyDetector`, `Bing.Autosuggest`, <br>`Bing.Autosuggest.v7`, `Bing.CustomSearch`, `Bing.Search`, `Bing.Search.v7`, <br>`Bing.Speech`, `Bing.SpellCheck`, `Bing.SpellCheck.v7`, `CognitiveServices`, <br>`ComputerVision`, `ContentModerator`, `CustomSpeech`, `CustomVision.Prediction`, <br>`CustomVision.Training`, `Emotion`, `Face`, `FormRecognizer`, `ImmersiveReader`, <br>`LUIS`, `LUIS.Authoring`, `MetricsAdvisor`, `OpenAI`, `Personalizer`, `QnAMaker`, <br>`Recommendations`, `SpeakerRecognition`, `Speech`, `SpeechServices`, `SpeechTranslation`, <br>`TextAnalytics`, `TextTranslation` and `WebLM`. <br>Changing this forces a new resource to be created. | `string` | `"CognitiveServices"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Specifies the supported Azure location where the resource exists. <br>Changing this forces a new resource to be created. | `string` | `"West Europe"` | no |
 | <a name="input_name"></a> [name](#input\_name) | Specifies the name of the Cognitive Service Account. <br>Changing this forces a new resource to be created. | `string` | n/a | yes |
@@ -46,6 +49,7 @@ No modules.
 | <a name="input_search_service_id"></a> [search\_service\_id](#input\_search\_service\_id) | If kind is `TextAnalytics` this specifies the ID of the Search service. | `string` | `null` | no |
 | <a name="input_search_service_key"></a> [search\_service\_key](#input\_search\_service\_key) | If kind is `TextAnalytics` this specifies the key of the Search service. | `string` | `null` | no |
 | <a name="input_sku_name"></a> [sku\_name](#input\_sku\_name) | Specifies the SKU Name for this Cognitive Service Account. <br>Possible values are `F0`, `F1`, `S0`, `S`, `S1`, `S2`, `S3`, <br>`S4`, `S5`, `S6`, `P0`, `P1`, `P2`, `E0` and `DC0` | `string` | `"S0"` | no |
+| <a name="input_storage_container_name"></a> [storage\_container\_name](#input\_storage\_container\_name) | The name of the Container which should be created within the Storage Account. <br>Changing this forces a new resource to be created. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to be added to resources created. | `map(string)` | `{}` | no |
 
 ## Outputs
