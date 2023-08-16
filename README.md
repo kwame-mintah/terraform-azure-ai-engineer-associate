@@ -140,7 +140,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="module_custom_vision_service_training"></a> [custom\_vision\_service\_training](#module\_custom\_vision\_service\_training) | ./modules/cognitive_services | n/a |
 | <a name="module_form_recognizer"></a> [form\_recognizer](#module\_form\_recognizer) | ./modules/cognitive_services | n/a |
 | <a name="module_language_service"></a> [language\_service](#module\_language\_service) | ./modules/cognitive_services | n/a |
-| <a name="module_media_services_video_indexer"></a> [media\_services\_video\_indexer](#module\_media\_services\_video\_indexer) | ./modules/video_indexers | n/a |
+| <a name="module_video_indexer_media_services"></a> [video\_indexer\_media\_services](#module\_video\_indexer\_media\_services) | ./modules/video_indexers | n/a |
 
 ## Resources
 
@@ -154,6 +154,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | [azurerm_monitor_diagnostic_setting.tfstate_diagnostic_setting](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/monitor_diagnostic_setting) | resource |
 | [azurerm_resource_group.environment_rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/resource_group) | resource |
 | [azurerm_search_service.cognitive_search_service](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/search_service) | resource |
+| [azurerm_search_service.qna_search_service](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/search_service) | resource |
 | [azurerm_storage_account.tfstate](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_account) | resource |
 | [azurerm_storage_account_customer_managed_key.tfstate_cmk](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_account_customer_managed_key) | resource |
 | [azurerm_storage_container.tfstate](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/storage_container) | resource |
