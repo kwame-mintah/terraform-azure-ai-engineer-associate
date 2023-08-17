@@ -119,6 +119,26 @@ resource "azurerm_search_service" "cognitive_search_service" {
   )
 }
 
+# FIXME: There is an error with creating a new function app and linking
+# to an existing storage account due to networking rules (?), even when
+# the terraform client has the roles:
+#   - Storage Account Contributor
+#   - Storage Blob Data Owner
+# Creation of storage file share failed with: 'The remote server returned an error: (403) Forbidden.
+# https://stackoverflow.com/questions/67696304/terraform-403-error-when-creating-function-app-and-storage-account-with-private?rq=3
+# https://chamindac.blogspot.com/2019/11/resolving-error-there-was-conflict.html
+# module "search_service_linux_function_app" {
+#   source               = "./modules/linux_function_app"
+#   name                 = "${var.environment}-linux-search-function-app"
+#   location             = azurerm_resource_group.environment_rg.location
+#   resource_group_name  = azurerm_resource_group.environment_rg.name
+#   personal_ip_address = var.personal_ip_address
+
+#   tags = merge(
+#     var.tags
+#   )
+# }
+
 module "cognitive_services_container_language" {
   source                     = "./modules/container_instances"
   name                       = "language"
