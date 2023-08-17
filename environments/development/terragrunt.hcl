@@ -21,7 +21,7 @@ inputs = {
 // remote_state {
 //   backend = "local"
 //   config = {
-//     path = "${get_parent_terragrunt_dir()}/${path_relative_to_include()}/terraform.tfstate"
+//     path = "${local.environment}/${path_relative_to_include()}/terraform.tfstate"
 //   }
 // }
 
@@ -35,9 +35,9 @@ inputs = {
 remote_state {
   backend = "azurerm"
   config = {
-    key                  = "${get_parent_terragrunt_dir()}/${path_relative_to_include()}/terraform.tfstate"
+    key                  = "${local.environment}/${path_relative_to_include()}/terraform.tfstate"
     resource_group_name  = "development-rg"
-    storage_account_name = "tfstatedevelopmentoru6u"
+    storage_account_name = "tfstatedevelopmentupkt8"
     container_name       = "tfstate-development"
   }
 }
