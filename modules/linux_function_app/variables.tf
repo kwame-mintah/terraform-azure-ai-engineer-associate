@@ -43,10 +43,11 @@ EOF
   default = "Y1"
 }
 
-variable "storage_account_name" {
+variable "personal_ip_address" {
   description = <<-EOF
-  The backend storage account name which will be used by this Function App.
-
+    Add your client IP address to the networking to allow
+    access.
+    
 EOF
 
   type = string
