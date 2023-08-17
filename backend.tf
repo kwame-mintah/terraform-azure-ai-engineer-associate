@@ -3,9 +3,7 @@
 # When prompted, answer yes and will copy the state file to the storage account.
 
 # terraform {
-#   backend "local" {
-#     path = "terraformstate/terraform.tfstate"
-#   }
+#   backend "local" {}
 # }
 
 # (2) Only uncomment out this code block, after the tfstate storage account has been created
