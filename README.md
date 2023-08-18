@@ -140,6 +140,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="module_custom_vision_service_training"></a> [custom\_vision\_service\_training](#module\_custom\_vision\_service\_training) | ./modules/cognitive_services | n/a |
 | <a name="module_form_recognizer"></a> [form\_recognizer](#module\_form\_recognizer) | ./modules/cognitive_services | n/a |
 | <a name="module_language_service"></a> [language\_service](#module\_language\_service) | ./modules/cognitive_services | n/a |
+| <a name="module_machine_learning"></a> [machine\_learning](#module\_machine\_learning) | ./modules/machine_learning | n/a |
 | <a name="module_video_indexer_media_services"></a> [video\_indexer\_media\_services](#module\_video\_indexer\_media\_services) | ./modules/video_indexers | n/a |
 
 ## Resources
@@ -200,6 +201,8 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="output_language_service_key_vault_name"></a> [language\_service\_key\_vault\_name](#output\_language\_service\_key\_vault\_name) | The name of the key vault created to contain language service<br>secrets. |
 | <a name="output_language_service_primary_access_key"></a> [language\_service\_primary\_access\_key](#output\_language\_service\_primary\_access\_key) | The primary access key which can be used to connect to <br>the Language Service Account. |
 | <a name="output_language_service_secondary_access_key"></a> [language\_service\_secondary\_access\_key](#output\_language\_service\_secondary\_access\_key) | The secondary access key which can be used to connect <br>to the Language Service Account. |
+| <a name="output_machine_learning_discovery_url"></a> [machine\_learning\_discovery\_url](#output\_machine\_learning\_discovery\_url) | The url for the discovery service to identify regional endpoints <br>for machine learning experimentation services. |
+| <a name="output_machine_learning_workspace_id"></a> [machine\_learning\_workspace\_id](#output\_machine\_learning\_workspace\_id) | The immutable id associated with this workspace. |
 | <a name="output_service_principal_client_id"></a> [service\_principal\_client\_id](#output\_service\_principal\_client\_id) | The principal being used to apply terraform changes <br>for this subscription. |
 | <a name="output_tenant_id"></a> [tenant\_id](#output\_tenant\_id) | The tenant ID used for this subscription. |
 | <a name="output_tfstate_resource_group_name"></a> [tfstate\_resource\_group\_name](#output\_tfstate\_resource\_group\_name) | The name of the resource group created for the<br>Terraform tfstate. |

@@ -209,6 +209,25 @@ EOF
   value = module.form_recognizer.cognitive_services_key_vault_name
 }
 
+output "machine_learning_discovery_url" {
+  description = <<-EOF
+    The url for the discovery service to identify regional endpoints 
+    for machine learning experimentation services.
+
+EOF
+
+  value = module.machine_learning.machine_learning_workspace_discovery_url
+}
+
+output "machine_learning_workspace_id" {
+  description = <<-EOF
+    The immutable id associated with this workspace.
+
+EOF
+
+  value = module.machine_learning.machine_learning_workspace_workspace_id
+}
+
 output "cognitive_services_container_language_fdqn" {
   description = <<-EOF
     The FDQN to connect to the container instance.
