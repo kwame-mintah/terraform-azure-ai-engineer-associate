@@ -104,6 +104,24 @@ resource "azurerm_storage_account" "machine_learning_storage" {
   allow_nested_items_to_be_public = false
 
   blob_properties {
+    cors_rule {
+      allowed_headers = [
+        "*",
+      ]
+      allowed_methods = [
+        "GET",
+        "HEAD",
+      ]
+      allowed_origins = [
+        "https://mlworkspace.azure.ai",
+        "https://ml.azure.com",
+        "https://*.ml.azure.com",
+      ]
+      exposed_headers = [
+        "*",
+      ]
+      max_age_in_seconds = 1800
+    }
     delete_retention_policy {
       days = 7
     }
@@ -154,8 +172,9 @@ resource "azurerm_storage_account" "machine_learning_storage" {
 #tfsec:ignore:azure-storage-default-action-deny
 #tfsec:ignore:azure-storage-allow-microsoft-service-bypass
 resource "azurerm_storage_account_network_rules" "machine_learning_network_rules" {
+  #checkov:skip=CKV_AZURE_35:Need to set to set to allow for clusters as no VNET is created
   storage_account_id = azurerm_storage_account.machine_learning_storage.id
-  default_action     = "Allow" #checkov:skip=CKV_AZURE_35:Need to set to set to allow for clusters as no VNET is created
+  default_action     = "Allow"
 
   depends_on = [azurerm_storage_account.machine_learning_storage]
 }
@@ -171,7 +190,7 @@ resource "azurerm_container_registry" "machine_learining_container_registry" {
   location                      = var.location
   resource_group_name           = var.resource_group_name
   admin_enabled                 = false
-  public_network_access_enabled = false
+  public_network_access_enabled = true
   sku                           = "Basic"
 
   identity {
