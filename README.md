@@ -141,6 +141,7 @@ Code formatting and documentation for `variables` and `outputs` is generated usi
 | <a name="module_form_recognizer"></a> [form\_recognizer](#module\_form\_recognizer) | ./modules/cognitive_services | n/a |
 | <a name="module_language_service"></a> [language\_service](#module\_language\_service) | ./modules/cognitive_services | n/a |
 | <a name="module_machine_learning"></a> [machine\_learning](#module\_machine\_learning) | ./modules/machine_learning | n/a |
+| <a name="module_open_ai"></a> [open\_ai](#module\_open\_ai) | ./modules/cognitive_services | n/a |
 | <a name="module_video_indexer_media_services"></a> [video\_indexer\_media\_services](#module\_video\_indexer\_media\_services) | ./modules/video_indexers | n/a |
 
 ## Resources

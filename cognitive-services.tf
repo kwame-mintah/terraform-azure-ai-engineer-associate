@@ -71,6 +71,22 @@ module "form_recognizer" {
   )
 }
 
+# You may not be able to create this resource please see here:
+# To request access to the Azure OpenAI service, visit https://aka.ms/oaiapply.
+module "open_ai" {
+  source              = "./modules/cognitive_services"
+  name                = "${var.environment}-open-ai"
+  location            = azurerm_resource_group.environment_rg.location
+  resource_group_name = azurerm_resource_group.environment_rg.name
+  kind                = "OpenAI"
+  personal_ip_address = var.personal_ip_address
+  sku_name            = "S0"
+
+  tags = merge(
+    var.tags
+  )
+}
+
 module "custom_question_answer_service" {
   source              = "./modules/cognitive_services"
   name                = "${var.environment}-custom-qna-service"
@@ -104,6 +120,7 @@ resource "azurerm_search_service" "qna_search_service" {
 # the Managed identity authentication selected must be "System-assigned"
 # or will result in the follow error message being thrown: 
 # Error detecting index schema from data source: "This request is not authorized to perform this operation."
+# Additionally, you need to give the cognitive search service the role 'Storage Blob Data Contributor'
 resource "azurerm_search_service" "cognitive_search_service" {
   name                = "${var.environment}-cognitive-search-service"
   location            = azurerm_resource_group.environment_rg.location
