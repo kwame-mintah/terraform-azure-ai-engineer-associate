@@ -13,7 +13,7 @@ resource "random_string" "resource_code" {
 }
 
 resource "azurerm_resource_group" "environment_rg" {
-  name     = "${var.environment}-rg"
+  name     = "ai-102-${var.environment}-resources"
   location = var.location
   tags = merge(
     local.common_tags
