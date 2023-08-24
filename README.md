@@ -37,59 +37,99 @@ for example the Azure Container Instance is always running and you will be charg
 you to have all these resources created.
 
 <details>
-<summary>Predicted Infracost as of 14/08/2023</summary>
+<summary>Predicted Infracost as of 24/08/2023</summary>
 
   ```markdown
-  Name                                                                              Monthly Qty  Unit                      Monthly Cost
+  Name                                                                                            Monthly Qty  Unit                      Monthly Cost
 
   azurerm_key_vault_key.tfstate_key_vault_key
-  ├─ Secrets operations                                                      Monthly cost depends on usage: $0.03 per 10K transactions
-  ├─ Storage key rotations                                                   Monthly cost depends on usage: $1.00 per renewals
-  └─ Software-protected keys                                                 Monthly cost depends on usage: $0.03 per 10K transactions
+  ├─ Secrets operations                                                                    Monthly cost depends on usage: $0.03 per 10K transactions
+  ├─ Storage key rotations                                                                 Monthly cost depends on usage: $1.00 per renewals
+  └─ Software-protected keys                                                               Monthly cost depends on usage: $0.03 per 10K transactions
 
   azurerm_log_analytics_workspace.tfstate_analytics_workspace
-  ├─ Log data ingestion                                                      Monthly cost depends on usage: $2.99 per GB
-  ├─ Log data export                                                         Monthly cost depends on usage: $0.13 per GB
-  ├─ Basic log data ingestion                                                Monthly cost depends on usage: $0.65 per GB
-  ├─ Basic log search queries                                                Monthly cost depends on usage: $0.0065 per GB searched
-  ├─ Archive data                                                            Monthly cost depends on usage: $0.026 per GB
-  ├─ Archive data restored                                                   Monthly cost depends on usage: $0.13 per GB
-  └─ Archive data searched                                                   Monthly cost depends on usage: $0.0065 per GB
+  ├─ Log data ingestion                                                                    Monthly cost depends on usage: $2.99 per GB
+  ├─ Log data export                                                                       Monthly cost depends on usage: $0.13 per GB
+  ├─ Basic log data ingestion                                                              Monthly cost depends on usage: $0.65 per GB
+  ├─ Basic log search queries                                                              Monthly cost depends on usage: $0.0065 per GB searched
+  ├─ Archive data                                                                          Monthly cost depends on usage: $0.026 per GB
+  ├─ Archive data restored                                                                 Monthly cost depends on usage: $0.13 per GB
+  └─ Archive data searched                                                                 Monthly cost depends on usage: $0.0065 per GB
+
+  azurerm_search_service.cognitive_search_service
+  ├─ Search usage (Basic, 1 unit)                                                                         730  hours                           $73.73
+  └─ Image extraction (first 1M)                                                           Monthly cost depends on usage: $1.00 per 1000 images
 
   azurerm_storage_account.tfstate
-  ├─ Capacity                                                                Monthly cost depends on usage: $0.0392 per GB
-  ├─ Write operations                                                        Monthly cost depends on usage: $0.11 per 10k operations
-  ├─ List and create container operations                                    Monthly cost depends on usage: $0.11 per 10k operations
-  ├─ Read operations                                                         Monthly cost depends on usage: $0.0043 per 10k operations
-  ├─ All other operations                                                    Monthly cost depends on usage: $0.0043 per 10k operations
-  └─ Blob index                                                              Monthly cost depends on usage: $0.075 per 10k tags
+  ├─ Capacity                                                                              Monthly cost depends on usage: $0.0392 per GB
+  ├─ Write operations                                                                      Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ List and create container operations                                                  Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ Read operations                                                                       Monthly cost depends on usage: $0.0043 per 10k operations
+  ├─ All other operations                                                                  Monthly cost depends on usage: $0.0043 per 10k operations
+  └─ Blob index                                                                            Monthly cost depends on usage: $0.075 per 10k tags
 
-  module.media_services_video_indexer.azurerm_storage_account.media_storage
-  ├─ Capacity                                                                Monthly cost depends on usage: $0.0392 per GB
-  ├─ Write operations                                                        Monthly cost depends on usage: $0.11 per 10k operations
-  ├─ List and create container operations                                    Monthly cost depends on usage: $0.11 per 10k operations
-  ├─ Read operations                                                         Monthly cost depends on usage: $0.0043 per 10k operations
-  ├─ All other operations                                                    Monthly cost depends on usage: $0.0043 per 10k operations
-  └─ Blob index                                                              Monthly cost depends on usage: $0.075 per 10k tags
+  module.cognitive_services.azurerm_storage_account.cognitive_service_storage[0]
+  ├─ Capacity                                                                              Monthly cost depends on usage: $0.0392 per GB
+  ├─ Write operations                                                                      Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ List and create container operations                                                  Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ Read operations                                                                       Monthly cost depends on usage: $0.0043 per 10k operations
+  ├─ All other operations                                                                  Monthly cost depends on usage: $0.0043 per 10k operations
+  └─ Blob index                                                                            Monthly cost depends on usage: $0.075 per 10k tags
 
-  OVERALL TOTAL                                                                                                                   $0.00
+  module.form_recognizer.azurerm_storage_account.cognitive_service_storage[0]
+  ├─ Capacity                                                                              Monthly cost depends on usage: $0.0392 per GB
+  ├─ Write operations                                                                      Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ List and create container operations                                                  Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ Read operations                                                                       Monthly cost depends on usage: $0.0043 per 10k operations
+  ├─ All other operations                                                                  Monthly cost depends on usage: $0.0043 per 10k operations
+  └─ Blob index                                                                            Monthly cost depends on usage: $0.075 per 10k tags
+
+  module.machine_learning.azurerm_application_insights.machine_learning_key_insights
+  └─ Data ingested                                                                         Monthly cost depends on usage: $2.30 per GB
+
+  module.machine_learning.azurerm_container_registry.machine_learining_container_registry
+  ├─ Registry usage (Basic)                                                                                30  days                             $5.00
+  ├─ Storage (over 10GB)                                                                   Monthly cost depends on usage: $0.10 per GB
+  └─ Build vCPU                                                                            Monthly cost depends on usage: $0.0001 per seconds
+
+  module.machine_learning.azurerm_storage_account.machine_learning_storage
+  ├─ Capacity                                                                              Monthly cost depends on usage: $0.0392 per GB
+  ├─ Write operations                                                                      Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ List and create container operations                                                  Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ Read operations                                                                       Monthly cost depends on usage: $0.0043 per 10k operations
+  ├─ All other operations                                                                  Monthly cost depends on usage: $0.0043 per 10k operations
+  └─ Blob index                                                                            Monthly cost depends on usage: $0.075 per 10k tags
+
+  module.video_indexer_media_services.azurerm_storage_account.media_storage
+  ├─ Capacity                                                                              Monthly cost depends on usage: $0.0392 per GB
+  ├─ Write operations                                                                      Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ List and create container operations                                                  Monthly cost depends on usage: $0.11 per 10k operations
+  ├─ Read operations                                                                       Monthly cost depends on usage: $0.0043 per 10k operations
+  ├─ All other operations                                                                  Monthly cost depends on usage: $0.0043 per 10k operations
+  └─ Blob index                                                                            Monthly cost depends on usage: $0.075 per 10k tags
+
+  OVERALL TOTAL                                                                                                                                $78.73
   ──────────────────────────────────
-  41 cloud resources were detected:
-  ∙ 5 were estimated, all of which include usage-based costs, see https://infracost.io/usage-file
-  ∙ 29 were free:
-    ∙ 10 x azurerm_key_vault_secret
-    ∙ 6 x azurerm_key_vault
-    ∙ 5 x azurerm_monitor_activity_log_alert
+  64 cloud resources were detected:
+  ∙ 11 were estimated, all of which include usage-based costs, see https://infracost.io/usage-file
+  ∙ 41 were free:
+    ∙ 14 x azurerm_key_vault_secret
+    ∙ 9 x azurerm_key_vault
+    ∙ 7 x azurerm_monitor_activity_log_alert
+    ∙ 3 x azurerm_storage_container
     ∙ 1 x azurerm_key_vault_access_policy
     ∙ 1 x azurerm_log_analytics_storage_insights
     ∙ 1 x azurerm_resource_group
     ∙ 1 x azurerm_role_assignment
     ∙ 1 x azurerm_search_service
     ∙ 1 x azurerm_storage_account_customer_managed_key
-    ∙ 1 x azurerm_storage_container
+    ∙ 1 x azurerm_storage_account_network_rules
     ∙ 1 x azurerm_user_assigned_identity
-  ∙ 7 are not supported yet, see https://infracost.io/requested-resources:
-    ∙ 5 x azurerm_cognitive_account
+  ∙ 12 are not supported yet, see https://infracost.io/requested-resources:
+    ∙ 7 x azurerm_cognitive_account
+    ∙ 1 x azurerm_container_group
+    ∙ 1 x azurerm_machine_learning_compute_cluster
+    ∙ 1 x azurerm_machine_learning_workspace
     ∙ 1 x azurerm_media_services_account
     ∙ 1 x azurerm_resource_group_template_deployment
   ```
