@@ -15,8 +15,10 @@ resource "random_string" "resource_code" {
   upper   = false
 }
 
-#| Azure Media Services will be retired June 30th, 2024. Please see
-#│ https://learn.microsoft.com/en-us/azure/media-services/latest/azure-media-services-retirement
+# Creates an Azure Media Services account with a dynamically generated name, specified location, resource group, 
+# storage authentication settings, associated storage account, and system-assigned identity, along with merged tags.
+#   | Azure Media Services will be retired June 30th, 2024. Please see
+#   │ https://learn.microsoft.com/en-us/azure/media-services/latest/azure-media-services-retirement
 resource "azurerm_media_services_account" "media_services" {
   name                        = "${var.name}${local.shorten_name}${random_string.resource_code.result}"
   resource_group_name         = var.resource_group_name
@@ -37,7 +39,9 @@ resource "azurerm_media_services_account" "media_services" {
   )
 }
 
-# Create video indexer (using arm template)
+# Deploys an Azure Resource Group Template Deployment for a Video Indexer solution, with parameters including the dynamically generated name, 
+# managed identity resource ID, media service account resource ID, tags, and ARM template file. The deployment is triggered incrementally when 
+# the template file changes and depends on the Media Services account, user-assigned identity, and role assignment resources.
 resource "azurerm_resource_group_template_deployment" "video_indexer" {
   resource_group_name = var.resource_group_name
   parameters_content = jsonencode({
@@ -60,7 +64,8 @@ resource "azurerm_resource_group_template_deployment" "video_indexer" {
   ]
 }
 
-# Create managed identify
+# Creates a user-assigned identity named "video-indexer-user-identity" with a dynamically generated name suffix, 
+# specified location, resource group, and merged tags.
 resource "azurerm_user_assigned_identity" "video_indexer_user_assigned_identity" {
   name                = "video-indexer-user-identity-${random_string.resource_code.result}"
   resource_group_name = var.resource_group_name
@@ -71,14 +76,19 @@ resource "azurerm_user_assigned_identity" "video_indexer_user_assigned_identity"
   )
 }
 
-# Create role assignement
+# Assigns the "Contributor" role to the user-assigned identity for accessing the Azure Media Services account, within 
+# the specified scope of the media services account's ID.
 resource "azurerm_role_assignment" "video_indexer_media_services_access" {
   scope                = azurerm_media_services_account.media_services.id
   role_definition_name = "Contributor"
   principal_id         = azurerm_user_assigned_identity.video_indexer_user_assigned_identity.principal_id
 }
 
-# Create storage account
+
+# Creates an Azure Storage Account for media storage with a dynamically generated name, specified location, resource group, tier, 
+# replication type, kind, minimum TLS version, public network access settings, HTTPS traffic-only setting, nested items access settings, 
+# network rules, queue properties for metrics and logging, system-assigned identity, and merged tags. 
+# It also has an exception to ignore changes related to customer-managed keys.
 resource "azurerm_storage_account" "media_storage" {
   name                            = "${var.name}${local.shorten_name}${random_string.resource_code.result}"
   resource_group_name             = var.resource_group_name

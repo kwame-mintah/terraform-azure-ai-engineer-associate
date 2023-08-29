@@ -15,6 +15,8 @@ resource "random_string" "resource_code" {
   upper   = false
 }
 
+# Creates an Azure Bot Web App resource with dynamic naming, specified location, 
+# resource group, SKU, and Microsoft App ID, along with merged tags.
 resource "azurerm_bot_web_app" "bot_service" {
   name                = "${var.name}-${random_string.resource_code.result}"
   location            = var.location
@@ -27,8 +29,8 @@ resource "azurerm_bot_web_app" "bot_service" {
   )
 }
 
-# Create an application registration within Azure Active Directory (AAD)
-
+# Defines an Azure AD Application with a dynamic display name, prevents duplicate names, 
+# assigns owners based on conditions, and adds relevant tags, including ones ignored for removal.
 resource "azuread_application" "aad_application" {
   display_name            = "${var.name}-app-${random_string.resource_code.result}"
   prevent_duplicate_names = true
@@ -41,6 +43,9 @@ resource "azuread_application" "aad_application" {
   ]
 }
 
+# Creates an Azure AD Application Password associated with the specified application object ID and 
+# dynamic display name, enabling automatic rotation triggered by changes and dependent on an Azure AD Application 
+# and a time-based rotation configuration.
 resource "azuread_application_password" "aad_application_password" {
   application_object_id = azuread_application.aad_application.object_id
   display_name          = "${var.name}-app-${random_string.resource_code.result}"
@@ -52,6 +57,7 @@ resource "azuread_application_password" "aad_application_password" {
   depends_on = [azuread_application.aad_application]
 }
 
+# Configures a time-based rotation for Azure AD Application Passwords, triggering a rotation every 180 days.
 resource "time_rotating" "aad_application_password_rotation" {
   rotation_days = 180
 }

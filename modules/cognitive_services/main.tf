@@ -18,6 +18,8 @@ resource "random_string" "resource_code" {
   upper   = false
 }
 
+# Creates an Azure Cognitive Services account with specified attributes including name, location, resource group, 
+# kind, SKU, and custom search service details, as well as a system-assigned identity, and merged tags.
 resource "azurerm_cognitive_account" "cognitive_services_account" {
   name                = var.name
   location            = var.location
@@ -37,6 +39,9 @@ resource "azurerm_cognitive_account" "cognitive_services_account" {
   )
 }
 
+# Defines an Azure Key Vault for Cognitive Services with specific attributes, including a dynamically generated name, 
+# location, resource group, SKU, retention settings, purge protection, network ACLs, and an access policy for the Terraform 
+# client to manage keys and secrets, along with merged tags.
 resource "azurerm_key_vault" "cognitive_services_key_vault" {
   name                       = lower("${local.shorten_name}-${local.shorten_kind}${random_string.resource_code.result}") # Vault name must be between 3 and 24 characters in length.
   location                   = var.location
@@ -84,6 +89,8 @@ resource "azurerm_key_vault" "cognitive_services_key_vault" {
   )
 }
 
+# Creates an Azure Key Vault secret to store the primary access key of the Cognitive Services account, setting its name, value,
+# associated Key Vault ID, expiration date, and content type.
 resource "azurerm_key_vault_secret" "cognitive_services_primary_access_key" {
   name            = lower("${var.name}-primary-access-key")
   value           = azurerm_cognitive_account.cognitive_services_account.primary_access_key
@@ -92,6 +99,8 @@ resource "azurerm_key_vault_secret" "cognitive_services_primary_access_key" {
   content_type    = "text/plain"
 }
 
+# Defines an Azure Key Vault secret for storing the secondary access key of the Cognitive Services account, with attributes 
+# including name, value, associated Key Vault ID, expiration date, and content type.
 resource "azurerm_key_vault_secret" "cognitive_services_secondary_access_key" {
   name            = lower("${var.name}-secondary-access-key")
   value           = azurerm_cognitive_account.cognitive_services_account.secondary_access_key
@@ -100,7 +109,8 @@ resource "azurerm_key_vault_secret" "cognitive_services_secondary_access_key" {
   content_type    = "text/plain"
 }
 
-
+# Creates an Azure Monitor activity log alert to monitor the Cognitive Services API account's activity log for the specified operation, 
+# utilizing criteria such as resource ID, operation name, and category, within the defined scopes and associated tags.
 resource "azurerm_monitor_activity_log_alert" "cognitive_services_alert" {
   name                = "${var.name}-activitylogalert"
   resource_group_name = var.resource_group_name
@@ -184,6 +194,8 @@ resource "azurerm_storage_account" "cognitive_service_storage" {
   )
 }
 
+# Creates an Azure Storage container for the Cognitive Services, subject to the condition defined by the 
+# "create_storage_account" variable, with the specified name and access type, associated with a selected storage account.
 #tfsec:ignore:azure-storage-no-public-access
 resource "azurerm_storage_container" "cognitive_service_container" {
   count                = var.create_storage_account ? 1 : 0

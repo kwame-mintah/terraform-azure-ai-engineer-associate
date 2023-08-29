@@ -16,6 +16,8 @@ resource "random_string" "resource_code" {
   upper   = false
 }
 
+# Defines an Azure App Service Plan with specified attributes, including name, location, 
+# resource group, OS type, SKU, worker count, and merged tags.
 resource "azurerm_service_plan" "linux_service_plan" {
   name                = "${var.name}-${var.service_plan}"
   location            = var.location
@@ -29,6 +31,9 @@ resource "azurerm_service_plan" "linux_service_plan" {
   )
 }
 
+# Creates an Azure Linux Function App with dynamic naming, specified location, resource group, 
+# associated service plan, and storage account, along with the application stack configuration specifying 
+# Node.js version 18, and dependencies on the Cognitive Service Storage Account.
 resource "azurerm_linux_function_app" "linux_function_app" {
   name                 = "${var.name}${random_string.resource_code.result}"
   location             = var.location
@@ -45,7 +50,9 @@ resource "azurerm_linux_function_app" "linux_function_app" {
   depends_on = [azurerm_storage_account.cognitive_service_storage]
 }
 
-
+# Defines an Azure Storage Account for Cognitive Services, with specified attributes including name, resource group, 
+# location, tier, replication type, kind, minimum TLS version, public network access settings, network rules, queue 
+# properties for metrics and logging, system-assigned identity, and merged tags, while ignoring changes related to customer-managed keys.
 resource "azurerm_storage_account" "cognitive_service_storage" {
   name                            = lower(local.storage_name)
   resource_group_name             = var.resource_group_name
