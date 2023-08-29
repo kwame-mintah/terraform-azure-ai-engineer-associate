@@ -2,21 +2,43 @@
 
 The main purpose of this repository is to terraform all the resources needed for [Exam AI-102: Designing and Implementing a Microsoft Azure AI Solution - Certification](https://learn.microsoft.com/en-us/certifications/exams/ai-102/?ns-enrollment-type=Collection&ns-enrollment-id=63rjhrqoe512d3).
 
-The end goal is to be easily deploy all the resources needed for the [self-paced learning](https://learn.microsoft.com/en-us/users/kwame-mintah/collections/63rjhrqoe512d3) modules.
+The end goal is to be easily deploy all the resources needed for the [self-paced learning](https://learn.microsoft.com/en-us/users/kwame-mintah/collections/63rjhrqoe512d3) modules. 
+As I have created resources following the instructions in the lab exercises when using the Azure Portal UI. Please note your your mileage may (or might) vary, as these resources 
+were deployed using my personal account which has no restrictions.
 
-## Development
+<u>Table of contents</u>
+- [Terraform Azure Ai Engineer Associate](#terraform-azure-ai-engineer-associate)
+  - [Dependencies](#dependencies)
+  - [Prerequisites](#prerequisites)
+  - [To-do list](#to-do-list)
+  - [Usage](#usage)
+  - [Cost](#cost)
+  - [Pre-Commit hooks](#pre-commit-hooks)
+  - [Documentation Generation](#documentation-generation)
+  - [Requirements](#requirements)
+  - [Providers](#providers)
+  - [Modules](#modules)
+  - [Resources](#resources)
+  - [Inputs](#inputs)
+  - [Outputs](#outputs)
 
-### Dependencies
+## Dependencies
 
 - [terraform](https://www.terraform.io/)
 - [terragrunt](https://terragrunt.gruntwork.io/)
-- [pre-commit](https://pre-commit.com/)
 - [terraform-docs](https://terraform-docs.io/) this is required for `terraform_docs` hooks
+- [pre-commit](https://pre-commit.com/)
 
 ## Prerequisites
 
 1. Have a [Azure Portal](https://portal.azure.com/) account. 
 2. You will need to create a Service Principal with a Client Secret [follow instructions](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret#creating-a-service-principal-in-the-azure-portal).
+
+## To-do list
+
+- [x] Include storage account to cognitive services
+- [ ] Create scripts that will give the search services the correct Azure IAM roles via API calls
+- [ ] Move the creation of storage accounts into separate module
 
 ## Usage
 
