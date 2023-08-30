@@ -1,3 +1,4 @@
+# Create machine learning resources.
 module "machine_learning" {
   source              = "./modules/machine_learning"
   name                = "machine-learning"

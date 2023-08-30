@@ -1,3 +1,4 @@
+# Create multi-account Cognitivie Service.
 module "cognitive_services" {
   source                 = "./modules/cognitive_services"
   name                   = "${var.environment}-cognitive-service"
@@ -13,6 +14,7 @@ module "cognitive_services" {
   )
 }
 
+# Create language service.
 module "language_service" {
   source              = "./modules/cognitive_services"
   name                = "${var.environment}-language-service"
@@ -27,6 +29,7 @@ module "language_service" {
   )
 }
 
+# Create custom vision service for training purposes.
 module "custom_vision_service_training" {
   source              = "./modules/cognitive_services"
   name                = "${var.environment}-custom-version-training"
@@ -41,6 +44,7 @@ module "custom_vision_service_training" {
   )
 }
 
+# Create custom vision service for prediction purposes.
 module "custom_vision_service_prediction" {
   source              = "./modules/cognitive_services"
   name                = "${var.environment}-custom-version-prediction"
@@ -55,6 +59,7 @@ module "custom_vision_service_prediction" {
   )
 }
 
+# Create form recognizer service.
 module "form_recognizer" {
   source                 = "./modules/cognitive_services"
   name                   = "${var.environment}-form-recognizer"
@@ -71,6 +76,7 @@ module "form_recognizer" {
   )
 }
 
+# Create Azure OpenAI resource.
 # You may not be able to create this resource please see here:
 # To request access to the Azure OpenAI service, visit https://aka.ms/oaiapply.
 module "open_ai" {
@@ -87,6 +93,7 @@ module "open_ai" {
   )
 }
 
+# Create language service for custom and answering purposes.
 module "custom_question_answer_service" {
   source              = "./modules/cognitive_services"
   name                = "${var.environment}-custom-qna-service"
@@ -105,6 +112,7 @@ module "custom_question_answer_service" {
   depends_on = [azurerm_search_service.qna_search_service]
 }
 
+# Create search service connected to custom question and anwsering service.
 resource "azurerm_search_service" "qna_search_service" {
   name                = "${var.environment}-custom-qna-search-service"
   location            = azurerm_resource_group.environment_rg.location
@@ -116,6 +124,7 @@ resource "azurerm_search_service" "qna_search_service" {
   )
 }
 
+# Create search service.
 # When importing data to the search service from a Azure Blob Storage,
 # the Managed identity authentication selected must be "System-assigned"
 # or will result in the follow error message being thrown: 
@@ -136,6 +145,7 @@ resource "azurerm_search_service" "cognitive_search_service" {
   )
 }
 
+# Create function app for custom api skill for search index.
 # FIXME: There is an error with creating a new function app and linking
 # to an existing storage account due to networking rules (?), even when
 # the terraform client has the roles:
@@ -156,6 +166,7 @@ resource "azurerm_search_service" "cognitive_search_service" {
 #   )
 # }
 
+# Create container instance pulling the language service image.
 module "cognitive_services_container_language" {
   source                     = "./modules/container_instances"
   name                       = "language"
@@ -170,6 +181,7 @@ module "cognitive_services_container_language" {
   )
 }
 
+# Create video indexer service.
 module "video_indexer_media_services" {
   source              = "./modules/video_indexers"
   name                = "videoindexer"

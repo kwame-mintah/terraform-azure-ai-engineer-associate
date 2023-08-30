@@ -36,9 +36,10 @@ were deployed using my personal account which has no restrictions.
 
 ## To-do list
 
-- [x] Include storage account to cognitive services
+- [ ] Optionally link storage account created for cognitive services
 - [ ] Create scripts that will give the search services the correct Azure IAM roles via API calls
 - [ ] Move the creation of storage accounts into separate module
+- [ ] Terraform creation of Azure Kubernetes Service for machine learning
 
 ## Usage
 
@@ -109,7 +110,7 @@ you to have all these resources created.
   module.machine_learning.azurerm_application_insights.machine_learning_key_insights
   └─ Data ingested                                                                         Monthly cost depends on usage: $2.30 per GB
 
-  module.machine_learning.azurerm_container_registry.machine_learining_container_registry
+  module.machine_learning.azurerm_container_registry.machine_learning_container_registry
   ├─ Registry usage (Basic)                                                                                30  days                             $5.00
   ├─ Storage (over 10GB)                                                                   Monthly cost depends on usage: $0.10 per GB
   └─ Build vCPU                                                                            Monthly cost depends on usage: $0.0001 per seconds
