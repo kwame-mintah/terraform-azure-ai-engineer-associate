@@ -28,7 +28,7 @@ resource "azurerm_machine_learning_workspace" "machine_learning_workspace" {
   application_insights_id       = azurerm_application_insights.machine_learning_key_insights.id
   key_vault_id                  = azurerm_key_vault.machine_learning_key_vault.id
   storage_account_id            = azurerm_storage_account.machine_learning_storage.id
-  container_registry_id         = azurerm_container_registry.machine_learining_container_registry.id
+  container_registry_id         = azurerm_container_registry.machine_learning_container_registry.id
   public_network_access_enabled = true #checkov:skip=CKV_AZURE_144:No VPN or VNET has been created for this project
 
   identity {
@@ -39,7 +39,7 @@ resource "azurerm_machine_learning_workspace" "machine_learning_workspace" {
     azurerm_application_insights.machine_learning_key_insights,
     azurerm_key_vault.machine_learning_key_vault,
     azurerm_storage_account.machine_learning_storage,
-    azurerm_container_registry.machine_learining_container_registry
+    azurerm_container_registry.machine_learning_container_registry
   ]
 }
 
@@ -193,7 +193,7 @@ resource "azurerm_storage_account_network_rules" "machine_learning_network_rules
 # Creates an Azure Container Registry for Machine Learning with a dynamically generated name, specified location, 
 # resource group, and attributes such as admin access settings, public network access settings, SKU, and system-assigned identity. 
 # Note that there are several Checkov skip comments indicating that certain configurations require the Premium SKU.
-resource "azurerm_container_registry" "machine_learining_container_registry" {
+resource "azurerm_container_registry" "machine_learning_container_registry" {
   #checkov:skip=CKV_AZURE_139:Requires upgrde to premium sku tier to enable additional networking configurations
   #checkov:skip=CKV_AZURE_163:quarantine_policy_enabled, retention_policy, trust_policy, export_policy_enabled and zone_redundancy_enabled are only supported on resources with the Premium SKU.
   #checkov:skip=CKV_AZURE_164:quarantine_policy_enabled, retention_policy, trust_policy, export_policy_enabled and zone_redundancy_enabled are only supported on resources with the Premium SKU.

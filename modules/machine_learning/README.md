@@ -27,7 +27,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [azurerm_application_insights.machine_learning_key_insights](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/application_insights) | resource |
-| [azurerm_container_registry.machine_learining_container_registry](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/container_registry) | resource |
+| [azurerm_container_registry.machine_learning_container_registry](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/container_registry) | resource |
 | [azurerm_key_vault.machine_learning_key_vault](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/key_vault) | resource |
 | [azurerm_machine_learning_compute_cluster.machine_learning_compute_cluster](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/machine_learning_compute_cluster) | resource |
 | [azurerm_machine_learning_workspace.machine_learning_workspace](https://registry.terraform.io/providers/hashicorp/azurerm/3.67.0/docs/resources/machine_learning_workspace) | resource |
